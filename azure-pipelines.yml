@@ -15,6 +15,7 @@ parameters:
     default: false
   - name: StampName
     displayName: StampName
+    default: azuredevopspractice
     type: string
     values:
       - azuredevopspractice
