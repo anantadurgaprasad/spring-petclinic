@@ -15,7 +15,7 @@ steps:
     repository: "petclinic"
     command: 'buildAndPush'
     Dockerfile: 'Dockerfile'
-    tags: $(Build.SourceVersion)
+    tags: ${{ slice(variables['Build.SourceVersion'], 0, 5) }}
 - task: Docker@2
   displayName: "acr_logout"
   condition: succeeded()
