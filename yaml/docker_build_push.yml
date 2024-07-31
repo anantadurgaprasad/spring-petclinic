@@ -4,13 +4,24 @@ parameters:
 
 steps: 
 - task: Docker@2
+  displayName: "acr_login"
+  condition: succeeded()
   inputs:
-  # Container Repository
-    #containerRegistry: # string. Container registry. 
-    #repository: # string. Optional. Use when command != login && command != logout && command != start && command != stop. Container repository. 
-  # Commands
-    command: 'build' # 'buildAndPush' | 'build' | 'push' | 'login' | 'logout' | 'start' | 'stop'. Required. Command. Default: buildAndPush.
-    Dockerfile: 'Dockerfile' # string.
+    command: "login"
+    containerRegistry: "azuredevopspracticacr-sc"
+- task: Docker@2
+  inputs:
+    containerRegistry: "azuredevopspracticacr-sc"
+    repository: "petclinic"
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
+    tag: '1.0.0' 
+- task: Docker@2
+  displayName: "acr_logout"
+  condition: succeeded()
+  inputs:
+  command: "logout"
+  containerRegistry: "azuredevopspracticacr-sc"
 
 - script: docker images
   displayName: list Docker images
