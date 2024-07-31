@@ -20,8 +20,8 @@ steps:
   displayName: "acr_logout"
   condition: succeeded()
   inputs:
-  command: "logout"
-  containerRegistry: "azuredevopspracticacr-sc"
+    command: "logout"
+    containerRegistry: "azuredevopspracticacr-sc"
 
 - script: docker images
   displayName: list Docker images
