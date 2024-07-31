@@ -13,23 +13,17 @@ parameters:
     displayName: push
     type: boolean
     default: false
+  - name: StampName
+    displayName: StampName
+    type: string
+    values:
+      - azuredevopspractice
+      - test
 
 steps:
-- script: printenv
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- script: | 
-      cat Dockerfile 
-      pwd
-      ls -al 
-  displayName: 'Testing'
-
 
 - template: yaml/docker_build_push.yml
   parameters:
     push: ${{ parameters.push }}
+    stampName: ${{ parameters.stampName }}
+    repository: ${{ split(Build.Repository.Name,'/')[1] }}

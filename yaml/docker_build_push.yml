@@ -1,6 +1,8 @@
 
 parameters:
   push: ""
+  stampName: ""
+  repository: ""
 
 steps: 
 - task: Docker@2
@@ -8,11 +10,11 @@ steps:
   condition: succeeded()
   inputs:
     command: "login"
-    containerRegistry: "azuredevopspracticacr-sc"
+    containerRegistry: "${{ parameters.stampName }}acr-sc"
 - task: Docker@2
   inputs:
-    containerRegistry: "azuredevopspracticacr-sc"
-    repository: "petclinic"
+    containerRegistry: "${{ parameters.stampName }}acr-sc"
+    repository: "${{ parameters.repository }"
     command: 'buildAndPush'
     Dockerfile: 'Dockerfile'
     tags: ${{ slice(variables['Build.SourceVersion'], 0, 5) }}
@@ -21,7 +23,7 @@ steps:
   condition: succeeded()
   inputs:
     command: "logout"
-    containerRegistry: "azuredevopspracticacr-sc"
+    containerRegistry: "${{ parameters.stampName }}acr-sc"
 
 # - task: PublishPipelineArtifact@1
 #   displayName: "publish_artifacts"
