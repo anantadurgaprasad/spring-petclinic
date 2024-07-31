@@ -11,3 +11,6 @@ steps:
   # Commands
     command: 'build' # 'buildAndPush' | 'build' | 'push' | 'login' | 'logout' | 'start' | 'stop'. Required. Command. Default: buildAndPush.
     Dockerfile: 'Dockerfile' # string.
+
+- script: docker images
+  displayName: list Docker images
