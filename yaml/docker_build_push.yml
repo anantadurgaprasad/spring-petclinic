@@ -1,8 +1,13 @@
+
+parameters:
+  push: ""
+
+steps: 
 - task: Docker@2
   inputs:
   # Container Repository
     #containerRegistry: # string. Container registry. 
     #repository: # string. Optional. Use when command != login && command != logout && command != start && command != stop. Container repository. 
   # Commands
-    command: 'buildAndPush' # 'buildAndPush' | 'build' | 'push' | 'login' | 'logout' | 'start' | 'stop'. Required. Command. Default: buildAndPush.
-    Dockerfile: '**/Dockerfile' # string.
+    command: 'build' # 'buildAndPush' | 'build' | 'push' | 'login' | 'logout' | 'start' | 'stop'. Required. Command. Default: buildAndPush.
+    Dockerfile: 'Dockerfile' # string.

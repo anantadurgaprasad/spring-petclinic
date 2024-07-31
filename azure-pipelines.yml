@@ -8,6 +8,12 @@ trigger:
 
 pool: Ec2pool
 
+parameters:
+  - name: push
+    displayName: push
+    type: boolean
+    default: false
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -22,3 +28,8 @@ steps:
       pwd
       ls -al 
   displayName: 'Testing'
+
+
+- template: yaml/docker_build_push.yml
+  parameters:
+    push: ${{ parameters.push }}
