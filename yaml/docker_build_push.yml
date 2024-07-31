@@ -23,5 +23,8 @@ steps:
     command: "logout"
     containerRegistry: "azuredevopspracticacr-sc"
 
-- script: docker images
-  displayName: list Docker images
+- task: PublishPipelineArtifact@1
+  displayName: "publish_artifacts"
+  inputs:
+      path: '$(Pipeline.Workspace)'
+      artifact: "test_artifact"
