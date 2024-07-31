@@ -27,4 +27,4 @@ steps:
   parameters:
     push: ${{ parameters.push }}
     stampName: ${{ parameters.stampName }}
-    repository: ${{ split(Build.Repository.Name,'/')[1] }}
+    repository: ${{ last(split(variables['Build.Repository.Name'], '/')) }}
