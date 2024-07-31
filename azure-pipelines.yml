@@ -15,7 +15,7 @@ parameters:
     default: false
 
 steps:
-- script: echo Hello, world!
+- script: printenv
   displayName: 'Run a one-line script'
 
 - script: |

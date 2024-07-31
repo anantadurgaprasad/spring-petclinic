@@ -23,8 +23,8 @@ steps:
     command: "logout"
     containerRegistry: "azuredevopspracticacr-sc"
 
-- task: PublishPipelineArtifact@1
-  displayName: "publish_artifacts"
-  inputs:
-      path: '$(Pipeline.Workspace)'
-      artifact: "test_artifact"
+# - task: PublishPipelineArtifact@1
+#   displayName: "publish_artifacts"
+#   inputs:
+#       path: '$(Pipeline.Workspace)'
+#       artifact: "test_artifact"
